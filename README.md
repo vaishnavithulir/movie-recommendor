@@ -1,130 +1,76 @@
-# Project: Movie Recommender System Using Machine Learning!
+# MovieCafe AI - Movie Recommender System 🍿
 
-<img src="demo/6.jpeg" alt="workflow" width="70%">
+[![Live Demo](https://img.shields.io/badge/Live_Demo-moverecommenderapp.netlify.app-00C7B7?style=for-the-badge&logo=netlify)](https://moverecommenderapp.netlify.app)
+[![Backend API](https://img.shields.io/badge/API-Render-46E3B7?style=for-the-badge&logo=render)](https://movie-recommendor-g09x.onrender.com)
+[![Expo](https://img.shields.io/badge/Frontend-Expo_React_Native-000020?style=for-the-badge&logo=expo)](https://expo.dev/)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 
-Recommendation systems are becoming increasingly important in today’s extremely busy world. People are always short on time with the myriad tasks they need to accomplish in the limited 24 hours. Therefore, the recommendation systems are important as they help them make the right choices, without having to expend their cognitive resources.
+A full-stack, machine learning-powered movie recommendation platform. MovieCafe AI uses content-based filtering to suggest personalized cinematic masterpieces based on user preferences.
 
-The purpose of a recommendation system basically is to search for content that would be interesting to an individual. Moreover, it involves a number of factors to create personalised lists of useful and interesting content specific to each user/individual. Recommendation systems are Artificial Intelligence based algorithms that skim through all possible options and create a customized list of items that are interesting and relevant to an individual. These results are based on their profile, search/browsing history, what other people with similar traits/demographics are watching, and how likely are you to watch those movies. This is achieved through predictive modeling and heuristics with the data available.
+## 🌟 Features
+- **Smart Recommendations:** Uses Scikit-learn and Cosine Similarity to analyze movie features (genres, keywords, cast, crew) and predict similar films.
+- **Cross-Platform Frontend:** Built with React Native (Expo) for a seamless, responsive experience.
+- **High-Performance API:** Backend served via FastAPI, providing fast and reliable recommendation queries.
+- **Dynamic Content:** Integrates with the TMDB REST API to fetch high-quality movie posters and real-time metadata.
 
-# Types of Recommendation System :
+## 🏗️ Architecture
+This project is built using a modern microservices architecture:
+* **Machine Learning:** `scikit-learn`, `pandas`, `numpy`
+* **Backend API:** Python, `FastAPI`, `uvicorn` (Deployed on **Render**)
+* **Frontend Web App:** React Native, Expo, Axios, TailwindCSS (Deployed on **Netlify**)
 
-### 1 ) Content Based :
+## 🚀 Live Demo
+You can try out the application live here:
+👉 **[MovieCafe AI Live Web App](https://moverecommenderapp.netlify.app)**
 
-- Content-based systems, which use characteristic information and takes item attriubutes into consideration .
+*(Note: The backend API is hosted on Render's free tier. If the app hasn't been used in 15 minutes, the first search may take up to 45 seconds to wake up the server. Subsequent searches are instant!)*
 
-- Twitter , Youtube .
+## 💻 Local Setup & Installation
 
-- Which music you are listening , what singer are you watching . Form embeddings for the features .
-	
-- User specific actions or similar items reccomendation .
-	
-- It will create a vector of it .
-	
-- These systems make recommendations using a user's item and profile features. They hypothesize that if a user was interested in an item in the past, they will once again be interested in it in the future
-	
-- One issue that arises is making obvious recommendations because of excessive specialization (user A is only interested in categories B, C, and D, and the system is not able to recommend items outside those categories, even though they could be interesting to them).
+To run this project locally on your machine, follow these steps:
 
-### 2 ) Collaborative Based :
-		
-- Collaborative filtering systems, which are based on user-item interactions.
-	
-- Clusters of users with same ratings , similar users .
-	
-- Book recommendation , so use cluster mechanism .
-	
-- We take only one parameter , ratings or comments .
-	
-- In short, collaborative filtering systems are based on the assumption that if a user likes item A and another user likes the same item A as well as another item, item B, the first user could also be interested in the second item . 
-	
-- Issues are :
-
-	- User-Item nXn matrix , so computationally expensive .
-
-	- Only famous items will get reccomended .
-
-	- New items might not get reccomended at all .   
-
-### 3 ) Hybrid Based :
-	
-- Hybrid systems, which combine both types of information with the aim of avoiding problems that are generated when working with just one kind.
-
-- Combination of both and used now a days .
-
-- Uses : word2vec , embedding .           
-
-# About this project:
-
-This is a streamlit web application that can recommend various kinds of similar movies based on an user interest.
-here is a demo,
-
-* [Click here to run it live on server](https://movie-recommeder-system.herokuapp.com/)
-
-
-# Demo:
-
-<img src="demo/1.png" alt="workflow" width="70%">
-
-<img src="demo/2.png" alt="workflow" width="70%">
-
-<img src="demo/3.png" alt="workflow" width="70%">
-
-
-# Dataset has been used:
-
-* [Dataset link](https://www.kaggle.com/tmdb/tmdb-movie-metadata?select=tmdb_5000_movies.csv)
-
-# Concept used to build the model.pkl file : cosine_similarity
-
-1 . Cosine Similarity is a metric that allows you to measure the similarity of the documents.
-
-2 . In order to demonstrate cosine similarity function we need vectors. Here vectors are numpy array.
-
-3 . Finally, Once we have vectors, We can call cosine_similarity() by passing both vectors. It will calculate the cosine similarity between these two.
-
-4 . It will be a value between [0,1]. If it is 0 then both vectors are complete different. But in the place of that if it is 1, It will be completely similar.
-
-5 . For more details , check URL : https://www.learndatasci.com/glossary/cosine-similarity/
-
-# How to run?
-### STEPS:
-
-Clone the repository
-
+### 1. Clone the Repository
 ```bash
-https://github.com/entbappy/Movie-Recommender-System-Using-Machine-Learning.git
-```
-### STEP 01- Create a conda environment after opening the repository
-
-```bash
-conda create -n movie python=3.7.10 -y
+git clone https://github.com/vaishnavithulir/movie-recommendor.git
+cd movie-recommendor
 ```
 
+### 2. Setup the FastAPI Backend
 ```bash
-conda activate movie
-```
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
-
-### STEP 02- install the requirements
-```bash
+# Install requirements
 pip install -r requirements.txt
+
+# Start the FastAPI server
+uvicorn backend.main:app --reload
 ```
+*The API will be available at `http://localhost:8000`*
 
-
+### 3. Setup the Expo Frontend
 ```bash
-#run this file to generate the models
+# Navigate to the mobile app directory
+cd mobile_app
 
-Movie Recommender System Data Analysis.ipynb
+# Install dependencies
+npm install
+
+# Update the API URL
+# In mobile_app/backend_config.ts, change API_URL to 'http://localhost:8000' for local testing.
+
+# Start the development server
+npm start
 ```
+*Press `w` in the terminal to open the web version in your browser.*
 
-Now run,
-```bash
-streamlit run app.py
-```
+## 🧠 How the Recommendation Engine Works
+The recommendation system uses **Content-Based Filtering**. It works on the principle that if you like a particular item, you will also like items that are similar to it. 
+1. We process a dataset of 5000+ movies to extract tags combining genres, keywords, cast, and directors.
+2. We use text vectorization techniques to convert these tags into numerical vectors.
+3. We calculate the **Cosine Similarity** between these vectors to determine the mathematical distance between different movies.
+4. When a user searches for a movie, the system instantly returns the 5 closest movies in the vector space.
 
-
-```bash
-Author: Bappy Ahmed
-Data Scientist
-Email: entbappy73@gmail.com
-
-```
+---
+*Built by [Vaishnavi Thulir](https://github.com/vaishnavithulir)*
